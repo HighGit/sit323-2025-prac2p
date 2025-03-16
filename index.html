@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Two Numbers</title>
+    <script>
+        function calculateSum() {
+            const num1 = document.getElementById("num1").value;
+            const num2 = document.getElementById("num2").value;
+
+            fetch(`/addTwoNumber?n1=${num1}&n2=${num2}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("result").innerText = "Sum: " + data.data;
+                })
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Simple Addition</h1 >
+    <label>Enter first number:</label>
+    <input type="number" id="num1" required>
+    <br><br>
+    
+    <label>Enter second number:</label>
+    <input type="number" id="num2" required>
+    <br><br>
+
+    <button onclick="calculateSum()">Add Numbers</button>
+    <h3 id="result"></h3>
+</body>
+</html>
